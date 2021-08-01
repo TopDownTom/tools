@@ -23,6 +23,7 @@ then
 				discardedScreen=$(echo ${connectedDevices[@]/$whichScreen})
 				xrandr --output $whichScreen --auto
 				xrandr --output $discardedScreen --off
+				xwallpaper --stretch ~/.pape.jpg
 				if [ $whichScreen == "$laptopScreen" ]
 				then
 					pacmd set-card-profile 0 output:analog-stereo
@@ -52,6 +53,7 @@ then
 					xrandr --output HDMI-2 --auto
 					xrandr --output $laptopScreen --auto
 					xrandr --output $laptopScreen --$laptopScreenRelPosition HDMI-2
+					xwallpaper --stretch ~/.pape.jpg
 					chooseAudio
 					break
 					;;
