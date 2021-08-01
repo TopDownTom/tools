@@ -49,9 +49,9 @@ then
 				*)
 					echo "Setting laptop screen $laptopScreenRelPosition external monitor"
 					notify-send -u normal "Moving $laptopScreen $laptopScreenRelPosition external monitor"
-					xrandr --output HDMI2 --auto
+					xrandr --output HDMI-2 --auto
 					xrandr --output $laptopScreen --auto
-					xrandr --output $laptopScreen --$laptopScreenRelPosition HDMI2
+					xrandr --output $laptopScreen --$laptopScreenRelPosition HDMI-2
 					chooseAudio
 					break
 					;;

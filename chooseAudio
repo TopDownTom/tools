@@ -1,6 +1,5 @@
 #! /bin/bash
 
-choice=()
 choice=($(xrandr --query | grep -w "connected" | awk '{print $1}'))
 primaryScreen=$(xrandr --query | grep primary | awk '{print $1}')
 
