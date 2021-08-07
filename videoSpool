@@ -1,0 +1,20 @@
+#! /bin/bash
+
+# Check if spool tempfile exists, and make one if not
+[ ! -f /tmp/tmp.*spool ] && mktemp --suffix=spool 1>/dev/null
+
+# Grab the file state
+spoolFile=$(ls /tmp/tmp.*spool)
+
+# Add the copied video URL to the file
+echo $(xclip -o) >> $spoolFile
+# Remove duplicates before proceeding
+echo "$(cat $spoolFile | uniq)" > $spoolFile
+
+if [ ! $(pgrep mpv) ]; then
+	mpv --playlist=$spoolFile
+	sed -i 1d $spoolFile
+	[ $(file $spoolFile | awk '{print $2}') != "empty" ] && mpv --playlist=$spoolFile
+else
+	exit 0
+fi
