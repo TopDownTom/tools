@@ -60,9 +60,7 @@ mount /dev/xX1 /mnt
 # Update your mirrorlist and put a few United States mirrors at the top of the list.
 # Install only essential packages. Wait to install user packages once the system is functional on its own.
 vim /etc/pacman.d/mirrorlist
-pacstrap /mnt base linux linux-firmware networkmanager stow git grub amd-ucode gcc make perl xorg-server xorg-xinit neovim dosfstools os-prober wpa_supplicant dialog sudo openssh rxvt-unicode cmus dmenu xorg-xrandr unzip firefox tmux alsa-utils vi i3 fakeroot wget which rsync xorg-xsetroot zathura zathura-pdf-poppler bash-completion cronie gzip make mpv network-manager-applet xwallpaper python-pip openvpn picom dunst
-#pacstrap /mnt base linux linux-firmware networkmanager stow git grub amd-ucode gcc make perl xorg-server xorg-xinit neovim dosfstools os-prober wpa_supplicant dialog sudo openssh rxvt-unicode cmus dmenu xorg-xrandr unzip firefox tmux alsa-utils vi i3 fakeroot wget which rsync xorg-xsetroot zathura zathura-pdf-poppler bash-completion cronie gzip make mpv network-manager-applet xwallpaper python-pip openvpn
-
+pacstrap /mnt base linux linux-firmware networkmanager stow git grub xorg-server xorg-xinit sudo openssh rxvt-unicode firefox tmux rsync bash-completion
 
 
 # Generate your file system table. Afterwards check /mnt/etc/fstab for errors.
@@ -115,6 +113,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # Set the root password
 passwd
+
+
+# Install the other packages
+cat /path/to/pkglist.txt | sudo pacman -Syu --needed -
 
 
 # Exit the chroot environment 
